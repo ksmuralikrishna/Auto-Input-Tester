@@ -1,0 +1,174 @@
+body {
+    font-family: Arial, sans-serif;
+    width: 280px; /* Standard extension popup width */
+    padding: 0;
+    margin: 0;
+    background-color: #f4f7f9;
+}
+
+.container {
+    padding: 15px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+header h1 {
+    font-size: 1.4em;
+    color: #333;
+    margin: 0;
+}
+
+#settingsBtn {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: #666;
+}
+
+.status-bar p {
+    font-size: 0.85em;
+    color: #555;
+    margin: 3px 0;
+}
+
+.profile-select {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-select label {
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+#profileSelector {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.link-btn {
+    align-self: flex-start;
+    background: none;
+    border: none;
+    color: #0066cc;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    font-size: 0.85em;
+}
+
+.test-input-section {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.test-input-section label {
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+#testInput {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+#testInput:focus {
+    outline: none;
+    border-color: #3476c2;
+    box-shadow: 0 0 3px rgba(52, 118, 194, 0.3);
+}
+
+.help-text {
+    font-size: 0.75em;
+    color: #666;
+    font-style: italic;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.btn {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.primary {
+    background-color: #3476c2; /* Blue */
+    color: white;
+}
+
+.secondary {
+    background-color: #6fb25c; /* Green */
+    color: white;
+}
+
+.tertiary {
+    background-color: #e74c3c; /* Red */
+    color: white;
+}
+
+.activity-log {
+    margin-top: 15px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.activity-log strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+#activityList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.8em;
+    color: #666;
+}
+
+#activityList li {
+    margin-bottom: 2px;
+}
+
+footer {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.75em;
+    color: #888;
+}
+
+footer a {
+    color: #888;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

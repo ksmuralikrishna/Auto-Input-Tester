@@ -3,7 +3,11 @@
   "name": "Auto Input Tester",
   "version": "1.0",
   "description": "Automatically fills input fields on a website for testing.",
-  "permissions": ["scripting", "activeTab"],
+
+  "options_page": "options.html",
+
+  "permissions": ["storage","scripting", "activeTab"],
+  "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "popup.html",
     "default_title": "Auto Input Tester"

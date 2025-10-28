@@ -1,36 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Auto Tester</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        width: 220px;
-        padding: 10px;
-      }
-      input, button {
-        width: 100%;
-        padding: 8px;
-        margin-top: 8px;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-      }
-      button {
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        cursor: pointer;
-      }
-      button:hover {
-        background-color: #45a049;
-      }
-    </style>
-  </head>
-  <body>
-    <h4>Auto Input Tester</h4>
-    <input type="text" id="sampleText" placeholder="Enter sample text..." />
-    <button id="fill">Auto Fill</button>
+<head>
+    <title>Auto Filler</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Auto Filler</h1>
+            <button id="settingsBtn" title="Settings"></button>
+        </header>
 
+        <div class="status-bar">
+            <p>Currently : <span id="currentUrl">Loading...</span></p>
+            <p><span id="formCount">0 forms, 0 fields</span> detected on this page.</p>
+        </div>
+
+        <!-- <div class="profile-select">
+            <label for="profileSelector">Select Profile:</label>
+            <select id="profileSelector">
+                <option value="default">Default Profile</option>
+                <option value="work">Work Profile</option>
+                </select>
+            <button id="editProfilesBtn" class="link-btn">Edit Profiles</button>
+        </div> -->
+
+        <div class="test-input-section">
+            <label for="testInput">Test Input (Optional):</label>
+            <input type="text" id="testInput" placeholder="Enter custom test data..." />
+            <small class="help-text">Leave empty to use smart autofill with dummy data. Press Enter to auto-fill.</small>
+        </div>
+
+        <div class="action-buttons">
+            <button id="autoFillBtn" class="btn primary">Auto-Fill Forms</button>
+            <button id="clearFormsBtn" class="btn tertiary">Clear Forms</button>
+        </div>
+
+        <div class="activity-log">
+            <strong>Recent Activity</strong>
+            <ul id="activityList">
+                <li>Last filled: Shipping Info (5 mins ago)</li>
+            </ul>
+        </div>
+
+        <footer>
+            <a href="#" id="helpLink">Help</a> | 
+            <a href="#" id="aboutLink">About</a>
+        </footer>
+    </div>
     <script src="popup.js"></script>
-  </body>
+</body>
 </html>
