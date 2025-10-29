@@ -1,272 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Filler Settings</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #f5f5f5;
-            padding: 20px;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 30px;
-        }
-
-        h1 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 28px;
-        }
-
-        .subtitle {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
-
-        .section {
-            margin-bottom: 35px;
-        }
-
-        .section h2 {
-            color: #2c3e50;
-            font-size: 18px;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #3498db;
-        }
-
-        .form-row {
-            margin-bottom: 15px;
-        }
-
-        .form-row.half {
-            display: inline-block;
-            width: 48%;
-            margin-right: 4%;
-        }
-
-        .form-row.half:nth-child(even) {
-            margin-right: 0;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #555;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-            font-family: inherit;
-            transition: border-color 0.3s;
-        }
-
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: #3498db;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-
-        button {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-save {
-            background: #3498db;
-            color: white;
-        }
-
-        .btn-save:hover {
-            background: #2980b9;
-        }
-
-        .btn-clear {
-            background: #e74c3c;
-            color: white;
-        }
-
-        .btn-clear:hover {
-            background: #c0392b;
-        }
-
-        .status-message {
-            padding: 12px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            display: none;
-            font-size: 14px;
-        }
-
-        .status-message.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .status-message.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>⚡ Auto Filler Settings</title>
+  <link rel="stylesheet" href="options.css">
 </head>
 <body>
-    <div class="container">
-        <h1>⚡ Auto Filler Settings</h1>
-        <p class="subtitle">Enter your information below. Click the extension icon on any form to auto-fill these details.</p>
+  <div class="container">
+    <h1>⚡ Auto Filler Settings</h1>
+    <p class="subtitle">Manage and save your default autofill data.</p>
 
-        <div id="statusMessage" class="status-message"></div>
+    <!-- Tabs -->
+    <div class="tabs">
+      <div class="tab-buttons">
+        <button class="tab-button active" data-tab="personal">👤 Personal</button>
+        <button class="tab-button" data-tab="address">🏠 Address</button>
+        <button class="tab-button" data-tab="professional">💼 Professional</button>
+        <button class="tab-button" data-tab="account">🔐 Account</button>
+        <button class="tab-button" data-tab="financial">💳 Financial</button>
+        <button class="tab-button" data-tab="other">🧩 Other</button>
+        <button class="tab-button" data-tab="urls">🔗 URLs & IDs</button>
+      </div>
 
-        <form id="settingsForm">
-            <!-- Personal Information -->
-            <div class="section">
-                <h2>Personal Information</h2>
-                <div class="form-row half">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" placeholder="John">
-                </div>
-                <div class="form-row half">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" placeholder="Doe">
-                </div>
-                <div class="form-row half">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="john@example.com">
-                </div>
-                <div class="form-row half">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+1 234 567 8900">
-                </div>
-                <div class="form-row half">
-                    <label for="dob">Date of Birth</label>
-                    <input type="date" id="dob" name="dob">
-                </div>
-                <div class="form-row half">
-                    <label for="gender">Gender</label>
-                    <select id="gender" name="gender">
-                        <option value="">Select...</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                        <option value="prefer-not-to-say">Prefer not to say</option>
-                    </select>
-                </div>
-            </div>
+      <div class="tab-content-wrapper">
+        <!-- Personal Info -->
+        <div class="tab-content active" id="personal">
+          <div class="form-row"><label>First Name</label><input id="firstName"></div>
+          <div class="form-row"><label>Last Name</label><input id="lastName"></div>
+          <div class="form-row"><label>Full Name</label><input id="fullName"></div>
+          <div class="form-row"><label>Email</label><input id="email" type="email"></div>
+          <div class="form-row"><label>Phone</label><input id="phone"></div>
+          <div class="form-row"><label>Mobile</label><input id="mobile"></div>
+        </div>
 
-            <!-- Address -->
-            <div class="section">
-                <h2>Address</h2>
-                <div class="form-row">
-                    <label for="address1">Street Address</label>
-                    <input type="text" id="address1" name="address1" placeholder="123 Main Street">
-                </div>
-                <div class="form-row">
-                    <label for="address2">Apartment, Suite, etc. (Optional)</label>
-                    <input type="text" id="address2" name="address2" placeholder="Apt 4B">
-                </div>
-                <div class="form-row half">
-                    <label for="city">City</label>
-                    <input type="text" id="city" name="city" placeholder="New York">
-                </div>
-                <div class="form-row half">
-                    <label for="state">State/Province</label>
-                    <input type="text" id="state" name="state" placeholder="NY">
-                </div>
-                <div class="form-row half">
-                    <label for="zipCode">ZIP/Postal Code</label>
-                    <input type="text" id="zipCode" name="zipCode" placeholder="10001">
-                </div>
-                <div class="form-row half">
-                    <label for="country">Country</label>
-                    <input type="text" id="country" name="country" placeholder="United States">
-                </div>
-            </div>
+        <!-- Address Info -->
+        <div class="tab-content" id="address">
+          <div class="form-row"><label>Address</label><input id="address"></div>
+          <div class="form-row"><label>Address 2</label><input id="address2"></div>
+          <div class="form-row"><label>City</label><input id="city"></div>
+          <div class="form-row"><label>State</label><input id="state"></div>
+          <div class="form-row"><label>Zip Code</label><input id="zipCode"></div>
+          <div class="form-row"><label>Country</label><input id="country"></div>
+          <div class="form-row"><label>Full Address</label><textarea id="fullAddress"></textarea></div>
+        </div>
 
-            <!-- Professional Information -->
-            <div class="section">
-                <h2>Professional Information</h2>
-                <div class="form-row half">
-                    <label for="jobTitle">Job Title</label>
-                    <input type="text" id="jobTitle" name="jobTitle" placeholder="Software Engineer">
-                </div>
-                <div class="form-row half">
-                    <label for="company">Company</label>
-                    <input type="text" id="company" name="company" placeholder="Tech Corp">
-                </div>
-                <div class="form-row">
-                    <label for="education">Education</label>
-                    <input type="text" id="education" name="education" placeholder="Bachelor's in Computer Science">
-                </div>
-                <div class="form-row">
-                    <label for="skills">Skills (comma separated)</label>
-                    <textarea id="skills" name="skills" placeholder="JavaScript, Python, React, Node.js"></textarea>
-                </div>
-                <div class="form-row">
-                    <label for="linkedIn">LinkedIn Profile URL</label>
-                    <input type="url" id="linkedIn" name="linkedIn" placeholder="https://linkedin.com/in/yourprofile">
-                </div>
-            </div>
+        <!-- Professional Info -->
+        <div class="tab-content" id="professional">
+          <div class="form-row"><label>Company</label><input id="company"></div>
+          <div class="form-row"><label>Job Title</label><input id="jobTitle"></div>
+          <div class="form-row"><label>Department</label><input id="department"></div>
+          <div class="form-row"><label>Website</label><input id="website" type="url"></div>
+        </div>
 
-            <!-- Additional Information -->
-            <div class="section">
-                <h2>Additional Information</h2>
-                <div class="form-row">
-                    <label for="website">Website/Portfolio</label>
-                    <input type="url" id="website" name="website" placeholder="https://yourwebsite.com">
-                </div>
-                <div class="form-row">
-                    <label for="bio">Bio/About Me</label>
-                    <textarea id="bio" name="bio" placeholder="Brief description about yourself..."></textarea>
-                </div>
-            </div>
+        <!-- Account Info -->
+        <div class="tab-content" id="account">
+          <div class="form-row"><label>Username</label><input id="username"></div>
+          <div class="form-row"><label>Password</label><input id="password" type="password"></div>
+          <div class="form-row"><label>Confirm Password</label><input id="confirmPassword" type="password"></div>
+        </div>
 
-            <div class="button-group">
-                <button type="submit" class="btn-save">💾 Save Settings</button>
-                <button type="button" id="clearBtn" class="btn-clear">🗑️ Clear All Data</button>
-            </div>
-        </form>
+        <!-- Financial Info -->
+        <div class="tab-content" id="financial">
+          <div class="form-row"><label>Credit Card</label><input id="creditCard"></div>
+          <div class="form-row"><label>CVV</label><input id="cvv"></div>
+          <div class="form-row"><label>Expiry Date</label><input id="expiryDate"></div>
+          <div class="form-row"><label>Bank Account</label><input id="bankAccount"></div>
+          <div class="form-row"><label>Routing Number</label><input id="routingNumber"></div>
+        </div>
+
+        <!-- Other Fields -->
+        <div class="tab-content" id="other">
+          <div class="form-row"><label>Date</label><input id="date" type="date"></div>
+          <div class="form-row"><label>Time</label><input id="time" type="time"></div>
+          <div class="form-row"><label>Age</label><input id="age"></div>
+          <div class="form-row"><label>Gender</label><input id="gender"></div>
+          <div class="form-row"><label>Comments</label><textarea id="comments"></textarea></div>
+          <div class="form-row"><label>Description</label><textarea id="description"></textarea></div>
+          <div class="form-row"><label>Notes</label><textarea id="notes"></textarea></div>
+        </div>
+
+        <!-- URLs and IDs -->
+        <div class="tab-content" id="urls">
+          <div class="form-row"><label>URL</label><input id="url" type="url"></div>
+          <div class="form-row"><label>ID</label><input id="id"></div>
+          <div class="form-row"><label>Reference</label><input id="reference"></div>
+        </div>
+      </div>
     </div>
 
-    <script src="options.js"></script>
+    <!-- Buttons -->
+    <div class="button-group right">
+      <button id="saveBtn" class="btn-save">💾 Save</button>
+      <button id="clearBtn" class="btn-clear">🗑️ Clear</button>
+    </div>
+
+    <div id="status" class="status"></div>
+  </div>
+
+  <script src="options.js"></script>
 </body>
 </html>

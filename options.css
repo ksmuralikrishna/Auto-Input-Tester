@@ -1,0 +1,200 @@
+body {
+    background-color: #0000001c;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    margin: 0;
+    padding-top: 40px;
+  }
+  
+  .container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 600px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  .subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 15px;
+  }
+  
+  /* Tabs */
+  .tabs {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tab-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .tab-button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    background: #e5ebf3;
+    color: #333;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  
+  .tab-button.active {
+    background: #0078d7;
+    color: #fff;
+    transform: scale(1.05);
+  }
+  
+  .tab-button:hover {
+    background: #d0d8e4;
+  }
+  
+  /* Tab Content */
+  .tab-content-wrapper {
+    border-top: 2px solid #eee;
+    padding-top: 15px;
+    min-height: 250px;
+  }
+  
+  .tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .tab-content.active {
+    display: block;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Two-Column Grid for Forms */
+  .tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .tab-content.active {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px 20px;
+  }
+  
+  /* Form Rows */
+  .form-row {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #444;
+  }
+  
+  input, textarea, select {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    border-color: #0078d7;
+    outline: none;
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 60px;
+    grid-column: span 2; /* Make textareas full width */
+  }
+  
+  /* Buttons */
+  .button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+  }
+  
+  .btn-save {
+    background: #0078d7;
+    color: #fff;
+  }
+  
+  .btn-save:hover {
+    background: #005fa3;
+    transform: translateY(-1px);
+  }
+  
+  .btn-clear {
+    background: #e74c3c;
+    color: #fff;
+  }
+  
+  .btn-clear:hover {
+    background: #c0392b;
+    transform: translateY(-1px);
+  }
+  
+  /* Status Message */
+  .status {
+    text-align: right;
+    font-size: 14px;
+    margin-top: 15px;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  
+  .status.success {
+    color: #2ecc71;
+  }
+  
+  .status.warning {
+    color: #e67e22;
+  }
+  
+  /* Responsive */
+  @media (max-width: 700px) {
+    .tab-content.active {
+      grid-template-columns: 1fr; /* Stack on small screens */
+    }
+  
+    .button-group {
+      justify-content: center;
+    }
+  
+    .status {
+      text-align: center;
+    }
+  }
+  
