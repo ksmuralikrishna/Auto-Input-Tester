@@ -134,7 +134,7 @@ function autoDetectAndFill(customTestInput = "") {
 
   // Helper: Detect field type and generate appropriate value
   function detectAndGenerateValue(element, identifiers, type) {
-    if (type === "email" || identifiers.includes("email") || identifiers.includes("mail")) {
+    if (type === "email" || identifiers.includes("email") || identifiers.includes("mail") || identifiers.includes("css_loginName")) {
       return dummyData.email;
     }
     if (type === "password" || identifiers.includes("password") || identifiers.includes("pass")) {
@@ -144,12 +144,31 @@ function autoDetectAndFill(customTestInput = "") {
         identifiers.includes("telephone") || identifiers.includes("contact")) {
       return dummyData.phone;
     }
+    if (
+      identifiers.includes("company") ||
+      identifiers.includes("organization") ||
+      identifiers.includes("org") ||
+      identifiers.includes("business") ||
+      identifiers.includes("employer") ||
+      identifiers.includes("workplace") ||
+      identifiers.includes("firm") ||
+      identifiers.includes("office") ||
+      identifiers.includes("corporate") ||
+      identifiers.includes("institution") ||
+      identifiers.includes("agency")
+    ) {
+      return dummyData.company;
+    }
+    if (identifiers.includes("fullname") || identifiers.includes("full_name") || identifiers.includes("fullName") || identifiers.includes("FullName")|| identifiers.includes("FULLNAME")) {
+      return dummyData.fullName;
+    }
     if (identifiers.includes("firstname") || identifiers.includes("first_name") || identifiers.includes("fname")) {
       return dummyData.firstName;
     }
     if (identifiers.includes("lastname") || identifiers.includes("last_name") || identifiers.includes("lname") || identifiers.includes("surname")) {
       return dummyData.lastName;
     }
+    
     if (identifiers.includes("name") && !identifiers.includes("username")) {
       return dummyData.fullName;
     }
@@ -174,9 +193,7 @@ function autoDetectAndFill(customTestInput = "") {
     if (identifiers.includes("country")) {
       return dummyData.country;
     }
-    if (identifiers.includes("company") || identifiers.includes("organization")) {
-      return dummyData.company;
-    }
+    
     if (identifiers.includes("job") || identifiers.includes("title") || identifiers.includes("position")) {
       return dummyData.jobTitle;
     }
